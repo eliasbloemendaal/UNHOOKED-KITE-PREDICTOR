@@ -26,21 +26,45 @@ class WeatherService {
         let task = session.dataTaskWithURL(url!) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             print(">>>>>>>\(data)")
             let json = JSON(data: data!)
-            let lon = json["coord"]["lon"].double
-            let lat = json["coord"]["lon"].double
-            let tempK = json["main"]["temp"].double!
-            let temp = tempK - 273.15
-            let name = json["name"].string
-            let desc = json["weather"][0]["description"].string
-            let icon = json["weather"][0]["icon"].string
-            let windSpeed = json["wind"]["speed"].double
-            let windDeg = json["wind"]["deg"].double
-           
+//            let lon = json["coord"]["lon"].double
+//            let lat = json["coord"]["lon"].double
+            var tempK = json["main"]["temp"].double
+            if tempK == nil {
+                tempK = 273.15
+            }
+            let temp = tempK! - 273.15
+
             
+            var name = json["name"].string
+            var desc = json["weather"][0]["description"].string
+            var icon = json["weather"][0]["icon"].string
+            var windSpeeds = json["wind"]["speed"].double
             
-            print("lon: \(lon!) lat: \(lat!) temp: \(temp)")
+            if windSpeeds == nil {
+                windSpeeds = 0
+            }
+            let windSpeed = (windSpeeds! * 1.94384449412)
             
-            let weather = Weather(cityName: name!, temp: temp, description: desc!, icon: icon!, windSpeed: windSpeed!, windDeg: windDeg!)
+            var windDeg = json["wind"]["deg"].double
+            if windDeg == nil {
+                windDeg = 0
+            }
+            
+            if icon == nil {
+                icon = "01d"
+            }
+            
+            if desc == nil {
+                desc = "Weather description"
+            }
+            
+            if name == nil {
+                name = "CityName"
+            }
+            
+//            print("lon: \(lon!) lat: \(lat!) temp: \(temp)")
+            
+            let weather = Weather(cityName: name!, temp: temp, description: desc!, icon: icon!, windSpeed: windSpeed, windDeg: windDeg!)
         
         
             if self.delegate != nil {
@@ -52,13 +76,6 @@ class WeatherService {
             }
         
         
-//        print("Weather service city: \(city)")
-//        
-//        let weather = Weather(cityName: city, temp: 237.12, description: "A nice day")
-//        
-//        if delegate != nil {
-//            delegate?.setWeather(weather)
-//        }
     }
         task.resume()
     

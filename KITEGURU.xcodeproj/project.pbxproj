@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		644B68B21C3E8E7B006DC6E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68B11C3E8E7B006DC6E1 /* AppDelegate.swift */; };
-		644B68B41C3E8E7B006DC6E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68B31C3E8E7B006DC6E1 /* ViewController.swift */; };
+		644B68B41C3E8E7B006DC6E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68B31C3E8E7B006DC6E1 /* MainViewController.swift */; };
 		644B68B71C3E8E7B006DC6E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 644B68B51C3E8E7B006DC6E1 /* Main.storyboard */; };
 		644B68B91C3E8E7B006DC6E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644B68B81C3E8E7B006DC6E1 /* Assets.xcassets */; };
 		644B68BC1C3E8E7B006DC6E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 644B68BA1C3E8E7B006DC6E1 /* LaunchScreen.storyboard */; };
@@ -16,6 +16,29 @@
 		644B68D21C3E8E7B006DC6E1 /* KITEGURUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68D11C3E8E7B006DC6E1 /* KITEGURUUITests.swift */; };
 		64BA9F951C3ECA360041E486 /* WheaterPredictionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */; };
 		64BA9F991C4174620041E486 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA9F981C4174620041E486 /* MapViewController.swift */; };
+		64D1CFF21C46678000C9F7DF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF11C46678000C9F7DF /* Bolts.framework */; };
+		64D1CFF41C46678800C9F7DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF31C46678800C9F7DF /* Parse.framework */; };
+		64D1CFF61C4668CC00C9F7DF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF51C4668CC00C9F7DF /* AudioToolbox.framework */; };
+		64D1CFF81C4668DD00C9F7DF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF71C4668DD00C9F7DF /* CFNetwork.framework */; };
+		64D1CFFA1C4668E600C9F7DF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF91C4668E600C9F7DF /* CoreGraphics.framework */; };
+		64D1CFFC1C4668F000C9F7DF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFFB1C4668F000C9F7DF /* CoreLocation.framework */; };
+		64D1CFFE1C4668FA00C9F7DF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFFD1C4668FA00C9F7DF /* QuartzCore.framework */; };
+		64D1D0001C46690100C9F7DF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFFF1C46690100C9F7DF /* Security.framework */; };
+		64D1D0021C46690800C9F7DF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D0011C46690800C9F7DF /* StoreKit.framework */; };
+		64D1D0041C46691600C9F7DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D0031C46691600C9F7DF /* SystemConfiguration.framework */; };
+		64D1D0061C46692200C9F7DF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D0051C46692200C9F7DF /* libz.tbd */; };
+		64D1D0081C46693800C9F7DF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D0071C46693800C9F7DF /* libsqlite3.tbd */; };
+		64D1D00A1C466A8200C9F7DF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D0091C466A8200C9F7DF /* MobileCoreServices.framework */; };
+		64D1D00C1C466A9900C9F7DF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D00B1C466A9900C9F7DF /* Accounts.framework */; };
+		64D1D00E1C466AA300C9F7DF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1D00D1C466AA300C9F7DF /* Social.framework */; };
+		64D1D0151C467A1700C9F7DF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D0141C467A1700C9F7DF /* SignInViewController.swift */; };
+		64D1D0171C467A8B00C9F7DF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D0161C467A8B00C9F7DF /* SignUpViewController.swift */; };
+		64D1D0191C46903900C9F7DF /* signUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D0181C46903900C9F7DF /* signUp.swift */; };
+		64D1D01B1C46ADA800C9F7DF /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D01A1C46ADA800C9F7DF /* Enums.swift */; };
+		64D1D01D1C47B8D000C9F7DF /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D01C1C47B8D000C9F7DF /* SignIn.swift */; };
+		64D1D01F1C47F21000C9F7DF /* Parsemodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D01E1C47F21000C9F7DF /* Parsemodel.swift */; };
+		64D1D0211C47F70500C9F7DF /* PersonalAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D0201C47F70500C9F7DF /* PersonalAccountViewController.swift */; };
+		64D1D0231C4C0B4B00C9F7DF /* PersonalRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D1D0221C4C0B4B00C9F7DF /* PersonalRatingViewController.swift */; };
 		64EB56DC1C440186006DE593 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB56DB1C440186006DE593 /* SwiftyJSON.swift */; };
 		64EB56E01C44F041006DE593 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB56DF1C44F041006DE593 /* WeatherService.swift */; };
 		64EB56E21C44F793006DE593 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB56E11C44F793006DE593 /* Weather.swift */; };
@@ -41,7 +64,7 @@
 /* Begin PBXFileReference section */
 		644B68AE1C3E8E7B006DC6E1 /* KITEGURU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KITEGURU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		644B68B11C3E8E7B006DC6E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		644B68B31C3E8E7B006DC6E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		644B68B31C3E8E7B006DC6E1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		644B68B61C3E8E7B006DC6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		644B68B81C3E8E7B006DC6E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		644B68BB1C3E8E7B006DC6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +77,30 @@
 		644B68D31C3E8E7B006DC6E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheaterPredictionsViewController.swift; sourceTree = "<group>"; };
 		64BA9F981C4174620041E486 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		64D1CFF11C46678000C9F7DF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		64D1CFF31C46678800C9F7DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		64D1CFF51C4668CC00C9F7DF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		64D1CFF71C4668DD00C9F7DF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		64D1CFF91C4668E600C9F7DF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		64D1CFFB1C4668F000C9F7DF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		64D1CFFD1C4668FA00C9F7DF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		64D1CFFF1C46690100C9F7DF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		64D1D0011C46690800C9F7DF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		64D1D0031C46691600C9F7DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		64D1D0051C46692200C9F7DF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		64D1D0071C46693800C9F7DF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		64D1D0091C466A8200C9F7DF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		64D1D00B1C466A9900C9F7DF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		64D1D00D1C466AA300C9F7DF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		64D1D00F1C46764300C9F7DF /* KITEGURU-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KITEGURU-Bridging-Header.h"; sourceTree = "<group>"; };
+		64D1D0141C467A1700C9F7DF /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		64D1D0161C467A8B00C9F7DF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		64D1D0181C46903900C9F7DF /* signUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUp.swift; sourceTree = "<group>"; };
+		64D1D01A1C46ADA800C9F7DF /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		64D1D01C1C47B8D000C9F7DF /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		64D1D01E1C47F21000C9F7DF /* Parsemodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parsemodel.swift; sourceTree = "<group>"; };
+		64D1D0201C47F70500C9F7DF /* PersonalAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalAccountViewController.swift; sourceTree = "<group>"; };
+		64D1D0221C4C0B4B00C9F7DF /* PersonalRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalRatingViewController.swift; path = ../PersonalRatingViewController.swift; sourceTree = "<group>"; };
 		64EB56DB1C440186006DE593 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		64EB56DF1C44F041006DE593 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		64EB56E11C44F793006DE593 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -64,6 +111,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D1D00E1C466AA300C9F7DF /* Social.framework in Frameworks */,
+				64D1D00C1C466A9900C9F7DF /* Accounts.framework in Frameworks */,
+				64D1D00A1C466A8200C9F7DF /* MobileCoreServices.framework in Frameworks */,
+				64D1D0081C46693800C9F7DF /* libsqlite3.tbd in Frameworks */,
+				64D1D0061C46692200C9F7DF /* libz.tbd in Frameworks */,
+				64D1D0041C46691600C9F7DF /* SystemConfiguration.framework in Frameworks */,
+				64D1D0021C46690800C9F7DF /* StoreKit.framework in Frameworks */,
+				64D1D0001C46690100C9F7DF /* Security.framework in Frameworks */,
+				64D1CFFE1C4668FA00C9F7DF /* QuartzCore.framework in Frameworks */,
+				64D1CFFC1C4668F000C9F7DF /* CoreLocation.framework in Frameworks */,
+				64D1CFFA1C4668E600C9F7DF /* CoreGraphics.framework in Frameworks */,
+				64D1CFF81C4668DD00C9F7DF /* CFNetwork.framework in Frameworks */,
+				64D1CFF61C4668CC00C9F7DF /* AudioToolbox.framework in Frameworks */,
+				64D1CFF41C46678800C9F7DF /* Parse.framework in Frameworks */,
+				64D1CFF21C46678000C9F7DF /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,10 +149,12 @@
 		644B68A51C3E8E7B006DC6E1 = {
 			isa = PBXGroup;
 			children = (
+				64D1CFF01C46650300C9F7DF /* Frameworks */,
 				644B68B01C3E8E7B006DC6E1 /* KITEGURU */,
 				644B68C51C3E8E7B006DC6E1 /* KITEGURUTests */,
 				644B68D01C3E8E7B006DC6E1 /* KITEGURUUITests */,
 				644B68AF1C3E8E7B006DC6E1 /* Products */,
+				64D1D00F1C46764300C9F7DF /* KITEGURU-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,14 +171,10 @@
 		644B68B01C3E8E7B006DC6E1 /* KITEGURU */ = {
 			isa = PBXGroup;
 			children = (
+				64D1D0131C4677F000C9F7DF /* View Controllers */,
+				64D1D0121C4677C800C9F7DF /* Model */,
 				644B68B11C3E8E7B006DC6E1 /* AppDelegate.swift */,
-				644B68B31C3E8E7B006DC6E1 /* ViewController.swift */,
 				644B68B51C3E8E7B006DC6E1 /* Main.storyboard */,
-				64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */,
-				64EB56DF1C44F041006DE593 /* WeatherService.swift */,
-				64EB56E11C44F793006DE593 /* Weather.swift */,
-				64EB56DB1C440186006DE593 /* SwiftyJSON.swift */,
-				64BA9F981C4174620041E486 /* MapViewController.swift */,
 				644B68B81C3E8E7B006DC6E1 /* Assets.xcassets */,
 				644B68BD1C3E8E7B006DC6E1 /* Info.plist */,
 				644B68BA1C3E8E7B006DC6E1 /* LaunchScreen.storyboard */,
@@ -138,6 +198,56 @@
 				644B68D31C3E8E7B006DC6E1 /* Info.plist */,
 			);
 			path = KITEGURUUITests;
+			sourceTree = "<group>";
+		};
+		64D1CFF01C46650300C9F7DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64D1D00D1C466AA300C9F7DF /* Social.framework */,
+				64D1D00B1C466A9900C9F7DF /* Accounts.framework */,
+				64D1D0091C466A8200C9F7DF /* MobileCoreServices.framework */,
+				64D1D0071C46693800C9F7DF /* libsqlite3.tbd */,
+				64D1D0051C46692200C9F7DF /* libz.tbd */,
+				64D1D0031C46691600C9F7DF /* SystemConfiguration.framework */,
+				64D1D0011C46690800C9F7DF /* StoreKit.framework */,
+				64D1CFFF1C46690100C9F7DF /* Security.framework */,
+				64D1CFFD1C4668FA00C9F7DF /* QuartzCore.framework */,
+				64D1CFFB1C4668F000C9F7DF /* CoreLocation.framework */,
+				64D1CFF91C4668E600C9F7DF /* CoreGraphics.framework */,
+				64D1CFF71C4668DD00C9F7DF /* CFNetwork.framework */,
+				64D1CFF51C4668CC00C9F7DF /* AudioToolbox.framework */,
+				64D1CFF31C46678800C9F7DF /* Parse.framework */,
+				64D1CFF11C46678000C9F7DF /* Bolts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64D1D0121C4677C800C9F7DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64D1D0181C46903900C9F7DF /* signUp.swift */,
+				64D1D01A1C46ADA800C9F7DF /* Enums.swift */,
+				64D1D01C1C47B8D000C9F7DF /* SignIn.swift */,
+				64D1D01E1C47F21000C9F7DF /* Parsemodel.swift */,
+				64EB56DF1C44F041006DE593 /* WeatherService.swift */,
+				64EB56DB1C440186006DE593 /* SwiftyJSON.swift */,
+				64EB56E11C44F793006DE593 /* Weather.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		64D1D0131C4677F000C9F7DF /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				644B68B31C3E8E7B006DC6E1 /* MainViewController.swift */,
+				64D1D0141C467A1700C9F7DF /* SignInViewController.swift */,
+				64D1D0161C467A8B00C9F7DF /* SignUpViewController.swift */,
+				64BA9F981C4174620041E486 /* MapViewController.swift */,
+				64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */,
+				64D1D0201C47F70500C9F7DF /* PersonalAccountViewController.swift */,
+				64D1D0221C4C0B4B00C9F7DF /* PersonalRatingViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,12 +382,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				64EB56E01C44F041006DE593 /* WeatherService.swift in Sources */,
-				644B68B41C3E8E7B006DC6E1 /* ViewController.swift in Sources */,
+				644B68B41C3E8E7B006DC6E1 /* MainViewController.swift in Sources */,
 				644B68B21C3E8E7B006DC6E1 /* AppDelegate.swift in Sources */,
+				64D1D01F1C47F21000C9F7DF /* Parsemodel.swift in Sources */,
 				64EB56E21C44F793006DE593 /* Weather.swift in Sources */,
+				64D1D0151C467A1700C9F7DF /* SignInViewController.swift in Sources */,
+				64D1D0231C4C0B4B00C9F7DF /* PersonalRatingViewController.swift in Sources */,
+				64D1D0211C47F70500C9F7DF /* PersonalAccountViewController.swift in Sources */,
+				64D1D0191C46903900C9F7DF /* signUp.swift in Sources */,
 				64BA9F951C3ECA360041E486 /* WheaterPredictionsViewController.swift in Sources */,
+				64D1D01D1C47B8D000C9F7DF /* SignIn.swift in Sources */,
+				64D1D0171C467A8B00C9F7DF /* SignUpViewController.swift in Sources */,
 				64BA9F991C4174620041E486 /* MapViewController.swift in Sources */,
 				64EB56DC1C440186006DE593 /* SwiftyJSON.swift in Sources */,
+				64D1D01B1C46ADA800C9F7DF /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,10 +537,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/Elias/Downloads/parse-library-1.12.0";
 				INFOPLIST_FILE = KITEGURU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FlowerdaleProductions.KITEGURU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KITEGURU-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -430,10 +552,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/Elias/Downloads/parse-library-1.12.0";
 				INFOPLIST_FILE = KITEGURU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FlowerdaleProductions.KITEGURU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KITEGURU-Bridging-Header.h";
 			};
 			name = Release;
 		};
