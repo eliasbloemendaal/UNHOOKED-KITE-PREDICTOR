@@ -15,18 +15,18 @@ class SignUp: NSObject {
     var userEmail: String?
     var password: String?
     var confirmPassword: String?
-    var kites: String?
-    var wetsuites: String?
+//    var kites: Array<String>?
+//    var wetsuites: Array<String>?
     
-    init(fName: String, lName: String, uName: String, email: String, pass: String, confirmPass: String, kite: String, wetsuit: String){
+    init(fName: String, lName: String, uName: String, email: String, pass: String, confirmPass: String){
         self.firstName = fName
         self.lastName = lName
         self.userName = uName
         self.userEmail = email
         self.password = pass
         self.confirmPassword = confirmPass
-        self.kites = kite
-        self.wetsuites = wetsuit
+//        self.kites = kite
+//        self.wetsuites = wetsuit
     }
 //    
 //    func signUpUser() throws -> Bool {
@@ -172,8 +172,8 @@ class SignUp: NSObject {
         user.username = userName!          // Use PFUser pre made fields username, email, or password.
         user.email = userEmail!           // To create a custom field name use [""] to decalre the name.
         user.password = password!        //**
-        user["Kites"] = kites!
-        user["Wetsuits"] = wetsuites!
+//        user["PersonalKites"] = kites!
+//        user["PersonalWetsuits"] = wetsuites!
         
         user.signUpInBackgroundWithBlock({(success: Bool, error: NSError?) -> Void in
             

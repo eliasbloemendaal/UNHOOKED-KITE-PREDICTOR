@@ -23,12 +23,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SettingButton.hidden = true
+        SettingButton.hidden = false
         // delegate variables
         userName.delegate = self
         password.delegate = self
         self.activityIndicator.hidden = true
-
+        self.navigationController?.navigationBar.hidden = true
+        self.SettingButton.hidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -46,41 +47,41 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0))
             {
                 SignIn.loginUserAsync(self.userName.text!, password: self.password.text!, completion:
-                    { (success: Bool) -> Void in
-                        //update UI
-                        if success
+                { (success: Bool) -> Void in
+                    //update UI
+                    if success
+                    {
+                        self.SignUpButton.enabled = false
+                        self.FreeWeatherButton.enabled = false
+                        dispatch_async(dispatch_get_main_queue())
                         {
-                                self.SignUpButton.enabled = false
-                                self.FreeWeatherButton.enabled = false
-                            dispatch_async(dispatch_get_main_queue())
+                            ParseModel.delay(seconds: 2, completion: {
+                            print("Login successful")
+                            self.errorLabel.text = "Login Successful"
+                            ParseModel.delay(seconds: 1.5, completion:
                                 {
-                                    ParseModel.delay(seconds: 2, completion: {
-                                        print("Login successful")
-                                        self.errorLabel.text = "Login Successful"
-                                        ParseModel.delay(seconds: 1.5, completion:
-                                            {
-                                                self.performSegueWithIdentifier("jaap", sender: nil)
-                                                self.activityIndicator.stopAnimating()
-                                                self.activityIndicator.hidden = true
-                                                self.userName.text = ""
-                                                self.password.text = ""
-                                                self.errorLabel.text = ""
-                                                self.SignUpButton.enabled = true
-                                                self.FreeWeatherButton.enabled = true
-                                        })
-                                    })
-                            }
-                        }
-                        else
-                        {
-                            dispatch_async(dispatch_get_main_queue())
-                                {
+                                    self.performSegueWithIdentifier("jaap", sender: nil)
                                     self.activityIndicator.stopAnimating()
-                                    self.userName.resignFirstResponder()
-                                    self.activityLabel.text = ""
-                                    self.errorLabel.text = Error.incorrectSignIn.description
+                                    self.activityIndicator.hidden = true
+                                    self.userName.text = ""
+                                    self.password.text = ""
+                                    self.errorLabel.text = ""
+                                    self.SignUpButton.enabled = true
+                                    self.FreeWeatherButton.enabled = true
+                                    })
+                                })
                             }
+                    }
+                    else
+                    {
+                        dispatch_async(dispatch_get_main_queue())
+                        {
+                        self.activityIndicator.stopAnimating()
+                        self.userName.resignFirstResponder()
+                        self.activityLabel.text = ""
+                        self.errorLabel.text = Error.incorrectSignIn.description
                         }
+                    }
                 })
         }
     }
@@ -89,7 +90,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func FreeWeatherButton(sender: AnyObject) {
         self.errorLabel.text = ""
     }
+  
+   
     
+  
+    @IBAction func freeWeatherpredicitonButton(sender: AnyObject) {
+        performSegueWithIdentifier("freeWeatherSignIn", sender: nil)
+        
+    }
     
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

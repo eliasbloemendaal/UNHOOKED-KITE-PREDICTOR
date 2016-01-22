@@ -29,8 +29,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         userEmail.delegate = self
         password.delegate = self
         confirmPassword.delegate = self
-        kites.delegate = self
-        wetsuites.delegate = self
+        navigationController?.navigationBarHidden
+//        kites.delegate = self
+//        wetsuites.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -39,7 +40,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         errorLabel.text = ""
         
         
-        let signup = SignUp(fName: firstName.text!, lName: lastName.text!, uName: userName.text!, email: userEmail.text!, pass: password.text!, confirmPass: confirmPassword.text!, kite: kites.text!, wetsuit: wetsuites.text!)
+        let signup = SignUp(fName: firstName.text!, lName: lastName.text!, uName: userName.text!, email: userEmail.text!, pass: password.text!, confirmPass: confirmPassword.text!)
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0))
             {

@@ -11,13 +11,15 @@ import MapKit
 
 class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate, UISearchBarDelegate {
 
-    @IBOutlet weak var CityTextField: UITextField!
+
+    @IBOutlet weak var AdviseButton: UIButton!
     @IBOutlet weak var TempLabel: UILabel!
     @IBOutlet weak var WindSpeedLabel: UILabel!
     @IBOutlet weak var WindDirectionLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var wheaterMoodLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var errorLabel: UILabel!
 
     let weatherService = WeatherService()
 
@@ -53,9 +55,10 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         
     }
     
-    func resetTextField() {
-        CityTextField.resignFirstResponder()
-    }
+    
+//    func resetTextField() {
+//        CityTextField.resignFirstResponder()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +84,7 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
 
         let name = searchBar.text
         self.weatherService.getWeather(name!)
+        print(self.weatherService.getWeather(name!))
         localSearch = MKLocalSearch(request: localSearchRequest)
         localSearch.startWithCompletionHandler { (localSearchResponse, error) -> Void in
             
@@ -106,5 +110,29 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         self.view.endEditing(true)
     }
 
+    @IBAction func AdviseButton(sender: AnyObject) {
+        let currentUser = PFUser.currentUser()
+        if currentUser == nil {
+            self.AdviseButton.enabled = false
+            self.errorLabel.text = ""
+            //You can't get advise if you are nog logged in!
+            showSuccessAlert()
+
+        }else{
+            performSegueWithIdentifier("mapToPersonal", sender: nil)
+            
+        }
+    }
+    
+    func showSuccessAlert() {
+        let alertview = UIAlertController(title: "Do you want advise?", message: "You have to log in first", preferredStyle: .Alert)
+        alertview.addAction(UIAlertAction(title: "Login", style: .Default, handler:
+            { (alertAction) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        alertview.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        self.presentViewController(alertview, animated: true, completion: nil)
+    }
 
 }
