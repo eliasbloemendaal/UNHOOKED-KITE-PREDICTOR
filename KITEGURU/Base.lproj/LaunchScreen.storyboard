@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5380679D-7B7D-40F0-90ED-1E43AAC54901" translatesAutoresizingMaskIntoConstraints="NO" id="Ibt-1l-Hbj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5CCFC088-8C7D-46C1-AFAA-4F83389F408B" translatesAutoresizingMaskIntoConstraints="NO" id="Ibt-1l-Hbj">
                                 <rect key="frame" x="67" y="20" width="240" height="280"/>
                             </imageView>
                         </subviews>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5380679D-7B7D-40F0-90ED-1E43AAC54901" width="640" height="480">
+        <image name="5CCFC088-8C7D-46C1-AFAA-4F83389F408B" width="640" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

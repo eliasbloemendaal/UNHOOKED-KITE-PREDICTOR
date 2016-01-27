@@ -19,7 +19,14 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var wheaterMoodLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var errorLabel: UILabel!
+
+    var city: String?
+    var temp: Double?
+    var desc: String?
+    var icon: String?
+    var speed: Double?
+    var deg: Double?
+    
 
     let weatherService = WeatherService()
 
@@ -52,7 +59,13 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
 //        WindSpeedLabel.text = "\(weather.windSpeed)"
         WindSpeedLabel.text = String(format: "%.2f", weather.windSpeed) + " Knots"
         WindDirectionLabel.text = String(format: "%.2f", weather.windDeg) + " Direction"
-        
+        city = weather.cityName
+        temp = weather.temp
+        desc = weather.description
+        icon = weather.icon
+        speed = weather.windSpeed
+        deg = weather.windDeg
+
     }
     
     
@@ -114,7 +127,6 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         let currentUser = PFUser.currentUser()
         if currentUser == nil {
             self.AdviseButton.enabled = false
-            self.errorLabel.text = ""
             //You can't get advise if you are nog logged in!
             showSuccessAlert()
 
@@ -131,8 +143,21 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
                 self.dismissViewControllerAnimated(true, completion: nil)
         }))
         alertview.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        
+        self.AdviseButton.enabled = true
         self.presentViewController(alertview, animated: true, completion: nil)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "mapToPersonal") {
+            let svc = segue.destinationViewController as! PersonalRatingViewController;
+            svc.city = city
+            svc.temp = temp
+            svc.desc = desc
+            svc.speed = speed
+            svc.deg = deg
+            svc.icon = icon
+        }
     }
 
 }

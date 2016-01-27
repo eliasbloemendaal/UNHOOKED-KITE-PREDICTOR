@@ -12,39 +12,74 @@ class PersonalAccountViewController: UIViewController {
 
     @IBOutlet weak var PersonalKiteLabel: UILabel!
     @IBOutlet weak var PersonalWetsuitLabel: UILabel!
+    @IBOutlet weak var PersonalWeight: UILabel!
     @IBOutlet weak var KiteTextField: UITextField!
     @IBOutlet weak var WetsuitTextField: UITextField!
-    
+    @IBOutlet weak var WeightTextfield: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
+    @IBOutlet weak var PersonalBootImage: UIImageView!
+    @IBOutlet weak var personalHoodImage: UIImageView!
+    @IBOutlet weak var personalGlovesImage: UIImageView!
+    
+    
     var Kites: String?
     var Wetsuits: String?
+    var Gloves: String?
+    var Glovess: String?
+    var Boots: String?
+    var Bootss: String?
+    var Hoods: String?
+    var Hoodss: String?
+    var Weight: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let query = PFUser.query()
-        query!.getObjectInBackgroundWithId("1AoX7eZiUv") {
+        query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
             (PFUser: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error)
             } else if let PFUser = PFUser {
-                let kitesString = self.trimString(String(PFUser["PersonalKites"]))
-                self.PersonalKiteLabel.text = kitesString
-                
-                let wetsuitString = self.trimString(String(PFUser["PersonalWetsuits"]))
-                self.PersonalWetsuitLabel.text = wetsuitString
+                self.PersonalKiteLabel.text = self.trimString(String(PFUser["PersonalKites"]))
+                self.PersonalWetsuitLabel.text = self.trimString(String(PFUser["PersonalWetsuits"]))
+                self.personalHoodImage.image = UIImage(named: self.trimString(String(PFUser["Boots"])))
+                self.personalGlovesImage.image = UIImage(named: self.trimString(String(PFUser["Gloves"])))
+                self.PersonalBootImage.image = UIImage(named: self.trimString(String(PFUser["Hoods"])))
+                self.PersonalWeight.text = self.trimString(String(PFUser["Weight"]))
                 print(PFUser)
             }
         }
     }
-
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addYourWeightButton(sender: AnyObject) {
+        let query = PFUser.query()
+        query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
+            (PFUser: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let PFUser = PFUser {
+                self.Weight = self.WeightTextfield.text
+                if self.checkQuantityCharactersDos(self.Weight!) == false {
+                    PFUser["Weight"] = [self.Weight!]
+                    PFUser.saveInBackground()
+                    self.PersonalWeight.text = String(self.Weight!)
+                    print(PFUser)
+                    self.ErrorLabel.text = ""
+                }
+                else {
+                    self.ErrorLabel.text = "Just two or three numbers!"
+                }
+            }else {
+                print(PFUser)
+            }
+        }
+    }
     
     @IBAction func AddKitesButton(sender: AnyObject) {
         let query = PFUser.query()
@@ -98,6 +133,11 @@ class PersonalAccountViewController: UIViewController {
 
     }
 
+
+    
+    
+
+    
     @IBAction func AddWetsuitButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -107,7 +147,7 @@ class PersonalAccountViewController: UIViewController {
             } else if let PFUser = PFUser {
                 self.Wetsuits = self.WetsuitTextField.text
                 
-                if self.containsOnlyNumbersAndComma(self.Wetsuits!) {
+                if self.containsOnlyNumbersAndSlash(self.Wetsuits!) {
 //                
                     if self.checkQuantityCharacters(self.Wetsuits!){
 //                        PFUser["PersonalWetsuits"] = []
@@ -118,10 +158,10 @@ class PersonalAccountViewController: UIViewController {
                         print(PFUser)
                         self.ErrorLabel.text = ""
                     }else{
-                        self.ErrorLabel.text = " You have to fill in 3 characters! "
+                        self.ErrorLabel.text = " Just one character! "
                     }
                 }else{
-                    self.ErrorLabel.text = " Just fill 3 charcters in, for example 5/3 !"
+                    self.ErrorLabel.text = "Just one character!"
                 }
             }
         }
@@ -136,7 +176,7 @@ class PersonalAccountViewController: UIViewController {
             } else if let PFUser = PFUser {
                 self.Wetsuits = self.WetsuitTextField.text
                 
-                if self.containsOnlyNumbersAndComma(self.Wetsuits!) == true {
+                if self.containsOnlyNumbersAndSlash(self.Wetsuits!) == true {
                     
                     if self.checkQuantityCharacters(self.Wetsuits!) == true {
                         
@@ -145,19 +185,19 @@ class PersonalAccountViewController: UIViewController {
                         self.PersonalWetsuitLabel.text = wetsuit
                         PFUser.saveInBackground()
                         print(self.checkQuantityCharacters(self.Wetsuits!))
-                        print(self.containsOnlyNumbersAndComma(self.Wetsuits!))
+                        print(self.containsOnlyNumbersAndSlash(self.Wetsuits!))
                         print(PFUser)
                         self.ErrorLabel.text = ""
-//                                    PFUser["PersonalWetsuits"] = []
+//                        PFUser["PersonalWetsuits"] = []
                     }
                     else
                     {
-                        self.ErrorLabel.text = "You have to fill in 3 characters "
+                        self.ErrorLabel.text = " Just one character!"
                     }
                 }
                 else
                 {
-                    self.ErrorLabel.text = " Just fill 3 charcters in, for example 5/3 !"
+                    self.ErrorLabel.text = " Just one character!"
                 }
             }
         }
@@ -171,6 +211,84 @@ class PersonalAccountViewController: UIViewController {
         performSegueWithIdentifier("logOutPersonalAccount", sender: nil)
     }
     
+    @IBAction func hoodButton(sender: AnyObject) {
+        let query = PFUser.query()
+        query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
+            (PFUser: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let PFUser = PFUser {
+                if self.personalHoodImage.image == UIImage(named: "wetsuitBoots") {
+                    self.personalHoodImage.image = UIImage(named: "redcross")
+                    self.Boots = "redcross"
+                    self.Bootss = "wetsuitBoots"
+                    PFUser["Boots"] = [self.Boots!]
+                    PFUser.saveInBackground()
+                    print(PFUser)
+                }else if self.personalHoodImage.image == UIImage(named: "redcross") {
+                    self.personalHoodImage.image = UIImage(named: "wetsuitBoots")
+                    self.Boots = "redcross"
+                    self.Bootss = "wetsuitBoots"
+                    PFUser["Boots"] = [self.Bootss!]
+                    PFUser.saveInBackground()
+                    print(PFUser)
+                }
+            }
+        }
+    }
+    
+    @IBAction func bootsButton(sender: AnyObject) {
+        let query = PFUser.query()
+        query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
+            (PFUser: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let PFUser = PFUser {
+                if self.PersonalBootImage.image == UIImage(named: "wetsuitHood") {
+                    self.PersonalBootImage.image = UIImage(named: "redcross")
+                    self.Hoods = "redcross"
+                    self.Hoodss = "wetsuitHood"
+                    PFUser["Hoods"] = [self.Hoods!]
+                    PFUser.saveInBackground()
+                    print(PFUser)
+                }else if self.PersonalBootImage.image == UIImage(named: "redcross") {
+                    self.PersonalBootImage.image = UIImage(named: "wetsuitHood")
+                    self.Hoods = "redcross"
+                    self.Hoodss = "wetsuitHood"
+                    PFUser["Hoods"] = [self.Hoodss!]
+                    PFUser.saveInBackground()
+                    print(PFUser)
+                }
+            }
+        }
+    }
+
+    @IBAction func GlovesButton(sender: AnyObject) {
+        let query = PFUser.query()
+        query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
+            (PFUser: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let PFUser = PFUser {
+                if self.personalGlovesImage.image == UIImage(named: "wetsuitGloves") {
+                    self.personalGlovesImage.image = UIImage(named: "redcross")
+                    self.Gloves = "redcross"
+                    self.Glovess = "wetsuitGloves"
+                    PFUser["Gloves"] = [self.Gloves!]
+                    PFUser.saveInBackground()
+                    print(PFUser)
+                }else if self.personalGlovesImage.image == UIImage(named: "redcross") {
+                    self.personalGlovesImage.image = UIImage(named: "wetsuitGloves")
+                    self.Gloves = "redcross"
+                    self.Glovess = "wetsuitGloves"
+                    PFUser["Gloves"] = [self.Glovess!]
+                    PFUser.saveInBackground()
+                    print(PFUser)
+                }
+            }
+        }
+    }
+    
     func containsOnlyNumbers(input: String) -> Bool {
         for char in input.characters {
             if (!(char >= "0" && char <= "9")) {
@@ -180,7 +298,7 @@ class PersonalAccountViewController: UIViewController {
         return true
     }
     
-    func containsOnlyNumbersAndComma(input: String) -> Bool {
+    func containsOnlyNumbersAndSlash(input: String) -> Bool {
         for char in input.characters {
             if (!(char >= "0" && char <= "9") && !(char == "/")) {
                 return false
@@ -190,10 +308,17 @@ class PersonalAccountViewController: UIViewController {
     }
     
     func checkQuantityCharacters(input: String) -> Bool {
-        if input.characters.count != 3 {
+        if input.characters.count != 1 {
             return false
         }
     return true
+    }
+    
+    func checkQuantityCharactersDos(input: String) -> Bool {
+        if input.characters.count == 2 || input.characters.count == 3 {
+            return false
+        }
+        return true
     }
     
     func checkQueantityCharactesrTwo(input: String) -> Bool {
