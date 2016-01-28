@@ -7,6 +7,9 @@
 //
 
 import Foundation
+
+//https://github.com/kevincaughman/Resume-App/tree/master/Models
+//The parsemodel from kevin caughman.
 class ParseModel {
     
     static func delay(seconds seconds: Double, completion:()->()) {
@@ -16,7 +19,6 @@ class ParseModel {
             completion()
         }
     }
-    
     
     func loginUserAsync(email: String, password: String, completion:(success:Bool) -> Void)
     {
@@ -32,7 +34,7 @@ class ParseModel {
                 {
                     completion(success: false)
                 }
-        }
-}
+            }
+    }
 
 }

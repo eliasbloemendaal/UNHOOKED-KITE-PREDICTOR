@@ -6,6 +6,7 @@
 //  Copyright © 2016 Elias Houttuijn Bloemendaal. All rights reserved.
 //
 
+// https://github.com/kevincaughman/Resume-App/tree/master/Models
 enum Error: ErrorType {
     case emptyField
     case passwordsDoNotMatch
@@ -15,6 +16,7 @@ enum Error: ErrorType {
     case invalidPassword
 }
 
+// With every error the another text will appaer
 extension Error: CustomStringConvertible {
     var description: String {
         switch self {

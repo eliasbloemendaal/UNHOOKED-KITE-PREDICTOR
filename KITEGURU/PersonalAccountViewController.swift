@@ -20,9 +20,23 @@ class PersonalAccountViewController: UIViewController {
     @IBOutlet weak var PersonalBootImage: UIImageView!
     @IBOutlet weak var personalHoodImage: UIImageView!
     @IBOutlet weak var personalGlovesImage: UIImageView!
+    @IBOutlet weak var yourWeightButton: UILabel!
+    @IBOutlet weak var addOrReplaceButton: UIButton!
+    @IBOutlet weak var yourKitesButton: UILabel!
+    @IBOutlet weak var addKiteButton: UIButton!
+    @IBOutlet weak var removeKiteButton: UIButton!
+    @IBOutlet weak var yourWetsuitButton: UILabel!
+    @IBOutlet weak var addWetsuitButton: UIButton!
+    @IBOutlet weak var removeWetsuitbutton: UIButton!
+    @IBOutlet weak var hoodButton: UIButton!
+    @IBOutlet weak var bootsButton: UIButton!
+    @IBOutlet weak var glovesButton: UIButton!
+    @IBOutlet weak var getWeatherDataButton: UIButton!
+    @IBOutlet weak var theGearMeterButton: UIButton!
     
-    
+    // Variables voor deze view controller
     var Kites: String?
+    var Weight: String?
     var Wetsuits: String?
     var Gloves: String?
     var Glovess: String?
@@ -30,33 +44,62 @@ class PersonalAccountViewController: UIViewController {
     var Bootss: String?
     var Hoods: String?
     var Hoodss: String?
-    var Weight: String?
+    var functions = Functions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Change the layout of the buttons
+        yourWeightButton.layer.cornerRadius = 10
+        addOrReplaceButton.layer.cornerRadius = 10
+        yourKitesButton.layer.cornerRadius = 10
+        addKiteButton.layer.cornerRadius = 10
+        removeKiteButton.layer.cornerRadius = 10
+        yourWetsuitButton.layer.cornerRadius = 10
+        addWetsuitButton.layer.cornerRadius = 10
+        removeWetsuitbutton.layer.cornerRadius = 10
+        hoodButton.layer.cornerRadius = 10
+        bootsButton.layer.cornerRadius = 10
+        glovesButton.layer.cornerRadius = 10
+        getWeatherDataButton.layer.cornerRadius = 10
+        theGearMeterButton.layer.cornerRadius = 10
+        
+        // http://stackoverflow.com/questions/26614395/swift-background-image-does-not-fit-showing-small-part-of-the-all-image
+        let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+        backgroundImage.image = UIImage(named: "kiteBackNine")
+        backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
+        self.view.insertSubview(backgroundImage, atIndex: 0)
+        
+        //https://parse.com/docs/ios/guide#objects-updating-objects
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
             (PFUser: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error)
             } else if let PFUser = PFUser {
-                self.PersonalKiteLabel.text = self.trimString(String(PFUser["PersonalKites"]))
-                self.PersonalWetsuitLabel.text = self.trimString(String(PFUser["PersonalWetsuits"]))
-                self.personalHoodImage.image = UIImage(named: self.trimString(String(PFUser["Boots"])))
-                self.personalGlovesImage.image = UIImage(named: self.trimString(String(PFUser["Gloves"])))
-                self.PersonalBootImage.image = UIImage(named: self.trimString(String(PFUser["Hoods"])))
-                self.PersonalWeight.text = self.trimString(String(PFUser["Weight"]))
-                print(PFUser)
+                self.PersonalKiteLabel.text = self.functions.trimString(String(PFUser["PersonalKites"]))
+                self.PersonalWetsuitLabel.text = self.functions.trimString(String(PFUser["PersonalWetsuits"]))
+                self.personalHoodImage.image = UIImage(named: self.functions.trimString(String(PFUser["Boots"])))
+                self.personalGlovesImage.image = UIImage(named: self.functions.trimString(String(PFUser["Gloves"])))
+                self.PersonalBootImage.image = UIImage(named: self.functions.trimString(String(PFUser["Hoods"])))
+                self.PersonalWeight.text = self.functions.trimString(String(PFUser["Weight"]))
+                self.navigationItem.title = String(PFUser["FirstName"])
+                
+                // First time dat iemand inlogt moeten de plaatjes een waarde hebben
+                if self.personalGlovesImage.image == nil && self.personalHoodImage.image == nil && self.PersonalBootImage.image == nil {
+                    self.personalHoodImage.image = UIImage(named: "redcross")
+                    self.PersonalBootImage.image = UIImage(named: "redcross")
+                    self.personalGlovesImage.image = UIImage(named: "redcross")
+                }
             }
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // Update parse door je gewicht toetevoegen
     @IBAction func addYourWeightButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -65,11 +108,12 @@ class PersonalAccountViewController: UIViewController {
                 print(error)
             } else if let PFUser = PFUser {
                 self.Weight = self.WeightTextfield.text
-                if self.checkQuantityCharactersDos(self.Weight!) == false {
+                
+                // Check of je eigen gewicht twee of drie getallen zijn
+                if self.functions.checkQuantityCharactersDos(self.Weight!) == false {
                     PFUser["Weight"] = [self.Weight!]
                     PFUser.saveInBackground()
                     self.PersonalWeight.text = String(self.Weight!)
-                    print(PFUser)
                     self.ErrorLabel.text = ""
                 }
                 else {
@@ -81,6 +125,7 @@ class PersonalAccountViewController: UIViewController {
         }
     }
     
+    // Update parse door kites toe tevoegen
     @IBAction func AddKitesButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -89,27 +134,30 @@ class PersonalAccountViewController: UIViewController {
                 print(error)
             } else if let PFUser = PFUser {
                 self.Kites = self.KiteTextField.text
-                if self.containsOnlyNumbers(self.Kites!) {
-                    if self.checkQueantityCharactesrTwo(self.Kites!) == true {
-    //                PFUser["PersonalKites"] = []
+                
+                // Check of het alleen maar nummers zijn
+                if self.functions.containsOnlyNumbers(self.Kites!) {
+                    
+                    // Check of het een of twee karaters zijn
+                    if self.functions.checkQueantityCharactesrTwo(self.Kites!) == true {
                         PFUser.addObjectsFromArray([self.Kites!], forKey:"PersonalKites")
                         PFUser.saveInBackground()
-                        let kitesString = self.trimString(String(PFUser["PersonalKites"]))
+                        let kitesString = self.functions.trimString(String(PFUser["PersonalKites"]))
                         self.PersonalKiteLabel.text = kitesString
                         self.ErrorLabel.text = ""
-                        print(PFUser)
                     }else{
                         self.ErrorLabel.text = "Your kites are only possible between 4 and 26 m2!"
                     }
                 }
                 else
                 {
-                    self.ErrorLabel.text = "Just fill a number/numbers in!"
+                    self.ErrorLabel.text = "Just fill a 2 number in!"
                 }
             }
         }
     }
     
+    // Update parse door kites te removen
     @IBAction func RemoveKitesButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -118,9 +166,11 @@ class PersonalAccountViewController: UIViewController {
                 print(error)
             } else if let PFUser = PFUser {
                 self.Kites = self.KiteTextField.text
-                if self.containsOnlyNumbers(self.Kites!){
+                
+                // Check of het alleen maar nummer zijn
+                if self.functions.containsOnlyNumbers(self.Kites!){
                     PFUser.removeObjectsInArray([self.Kites!], forKey:"PersonalKites")
-                    let kitesString = self.trimString(String(PFUser["PersonalKites"]))
+                    let kitesString = self.functions.trimString(String(PFUser["PersonalKites"]))
                     self.PersonalKiteLabel.text = kitesString
                     PFUser.saveInBackground()
                     print(PFUser)
@@ -130,14 +180,9 @@ class PersonalAccountViewController: UIViewController {
                 }
             }
         }
-
     }
 
-
-    
-    
-
-    
+    // Update parse door een wetsuit toe tevoegen
     @IBAction func AddWetsuitButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -147,13 +192,14 @@ class PersonalAccountViewController: UIViewController {
             } else if let PFUser = PFUser {
                 self.Wetsuits = self.WetsuitTextField.text
                 
-                if self.containsOnlyNumbersAndSlash(self.Wetsuits!) {
-//                
-                    if self.checkQuantityCharacters(self.Wetsuits!){
-//                        PFUser["PersonalWetsuits"] = []
+                // Check of het alleen nummers zijn
+                if self.functions.containsOnlyNumbers(self.Wetsuits!) {
+//                  
+                    // Check of het genoeg karakters zijn
+                    if self.functions.checkQuantityCharacters(self.Wetsuits!){
                         PFUser.addObjectsFromArray([self.Wetsuits!], forKey:"PersonalWetsuits")
                         PFUser.saveInBackground()
-                        let wetsuitString = self.trimString(String(PFUser["PersonalWetsuits"]))
+                        let wetsuitString = self.functions.trimString(String(PFUser["PersonalWetsuits"]))
                         self.PersonalWetsuitLabel.text = wetsuitString
                         print(PFUser)
                         self.ErrorLabel.text = ""
@@ -167,6 +213,7 @@ class PersonalAccountViewController: UIViewController {
         }
     }
 
+    // Update parse door wetsuit te removen
     @IBAction func RemoveWetsuitsButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -176,19 +223,14 @@ class PersonalAccountViewController: UIViewController {
             } else if let PFUser = PFUser {
                 self.Wetsuits = self.WetsuitTextField.text
                 
-                if self.containsOnlyNumbersAndSlash(self.Wetsuits!) == true {
+                if self.functions.containsOnlyNumbers(self.Wetsuits!) == true {
                     
-                    if self.checkQuantityCharacters(self.Wetsuits!) == true {
-                        
+                    if self.functions.checkQuantityCharacters(self.Wetsuits!) == true {
                         PFUser.removeObjectsInArray([self.Wetsuits!], forKey:"PersonalWetsuits")
-                        let wetsuit = self.trimString(String(PFUser["PersonalWetsuits"]))
+                        let wetsuit = self.functions.trimString(String(PFUser["PersonalWetsuits"]))
                         self.PersonalWetsuitLabel.text = wetsuit
                         PFUser.saveInBackground()
-                        print(self.checkQuantityCharacters(self.Wetsuits!))
-                        print(self.containsOnlyNumbersAndSlash(self.Wetsuits!))
-                        print(PFUser)
                         self.ErrorLabel.text = ""
-//                        PFUser["PersonalWetsuits"] = []
                     }
                     else
                     {
@@ -203,14 +245,7 @@ class PersonalAccountViewController: UIViewController {
         }
     }
     
-    @IBAction func LogOutButton(sender: AnyObject) {
-        print("hij zit in de log out button")
-        PFUser.logOut()
-        var currentUser = PFUser.currentUser() // this will now be nil
-        print(currentUser)
-        performSegueWithIdentifier("logOutPersonalAccount", sender: nil)
-    }
-    
+    // Update parse door hood toetevoegen of weg te halen
     @IBAction func hoodButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -224,19 +259,18 @@ class PersonalAccountViewController: UIViewController {
                     self.Bootss = "wetsuitBoots"
                     PFUser["Boots"] = [self.Boots!]
                     PFUser.saveInBackground()
-                    print(PFUser)
                 }else if self.personalHoodImage.image == UIImage(named: "redcross") {
                     self.personalHoodImage.image = UIImage(named: "wetsuitBoots")
                     self.Boots = "redcross"
                     self.Bootss = "wetsuitBoots"
                     PFUser["Boots"] = [self.Bootss!]
                     PFUser.saveInBackground()
-                    print(PFUser)
                 }
             }
         }
     }
     
+    // Update parse door boots te toetevoegen of weg te halen
     @IBAction func bootsButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -250,19 +284,18 @@ class PersonalAccountViewController: UIViewController {
                     self.Hoodss = "wetsuitHood"
                     PFUser["Hoods"] = [self.Hoods!]
                     PFUser.saveInBackground()
-                    print(PFUser)
                 }else if self.PersonalBootImage.image == UIImage(named: "redcross") {
                     self.PersonalBootImage.image = UIImage(named: "wetsuitHood")
                     self.Hoods = "redcross"
                     self.Hoodss = "wetsuitHood"
                     PFUser["Hoods"] = [self.Hoodss!]
                     PFUser.saveInBackground()
-                    print(PFUser)
                 }
             }
         }
     }
 
+    // Update parse door te gloves weg te halen of toetevoegen
     @IBAction func GlovesButton(sender: AnyObject) {
         let query = PFUser.query()
         query!.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!) {
@@ -289,85 +322,15 @@ class PersonalAccountViewController: UIViewController {
         }
     }
     
-    func containsOnlyNumbers(input: String) -> Bool {
-        for char in input.characters {
-            if (!(char >= "0" && char <= "9")) {
-                return false
-            }
-        }
-        return true
+    // Log out button, logt de current user uit en zal de viewController veranderen
+    @IBAction func LogOutButton(sender: AnyObject) {
+        PFUser.logOut()
+        var currentUser = PFUser.currentUser()
+        performSegueWithIdentifier("logOutPersonalAccount", sender: nil)
     }
     
-    func containsOnlyNumbersAndSlash(input: String) -> Bool {
-        for char in input.characters {
-            if (!(char >= "0" && char <= "9") && !(char == "/")) {
-                return false
-            }
-        }
-        return true
-    }
-    
-    func checkQuantityCharacters(input: String) -> Bool {
-        if input.characters.count != 1 {
-            return false
-        }
-    return true
-    }
-    
-    func checkQuantityCharactersDos(input: String) -> Bool {
-        if input.characters.count == 2 || input.characters.count == 3 {
-            return false
-        }
-        return true
-    }
-    
-    func checkQueantityCharactesrTwo(input: String) -> Bool {
-        if input.characters.count > 0 && input.characters.count < 3 {
-            return true
-        }
-        return false
-    }
-
-    
-//    func alphaCheck(input: String) -> Bool {
-//        
-//        for char in input.utf8 {
-//            switch char {
-//            case 65...90:
-//                continue
-//            case 97...122:
-//                continue
-//            default:
-//                return false
-//            }
-//        }
-//        return true
-//    }
-    
-    func trimString(UntrimmedString: String) -> String {
-        let text = String(UntrimmedString)
-        let textWithoutNewLines = text.stringByReplacingOccurrencesOfString("\n", withString: "")
-        let textWithoutLeftComma = textWithoutNewLines.stringByReplacingOccurrencesOfString("(", withString: "")
-        let textWithoutRightComma = textWithoutLeftComma.stringByReplacingOccurrencesOfString(")", withString: "")
-        let textWithoutSpace = textWithoutRightComma.stringByReplacingOccurrencesOfString(" ", withString: "")
-        let textChanged = textWithoutSpace.stringByReplacingOccurrencesOfString(",", withString: "-")
-        return textChanged
-
-    }
-    
-    
-    
+    // Als er buiten het keyboard wordt geklikt gaat het keyboard weg
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		644B68B21C3E8E7B006DC6E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68B11C3E8E7B006DC6E1 /* AppDelegate.swift */; };
-		644B68B41C3E8E7B006DC6E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68B31C3E8E7B006DC6E1 /* MainViewController.swift */; };
-		644B68B71C3E8E7B006DC6E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 644B68B51C3E8E7B006DC6E1 /* Main.storyboard */; };
 		644B68B91C3E8E7B006DC6E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 644B68B81C3E8E7B006DC6E1 /* Assets.xcassets */; };
 		644B68BC1C3E8E7B006DC6E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 644B68BA1C3E8E7B006DC6E1 /* LaunchScreen.storyboard */; };
 		644B68C71C3E8E7B006DC6E1 /* KITEGURUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68C61C3E8E7B006DC6E1 /* KITEGURUTests.swift */; };
 		644B68D21C3E8E7B006DC6E1 /* KITEGURUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644B68D11C3E8E7B006DC6E1 /* KITEGURUUITests.swift */; };
+		6479CFC31C59181D00EE6A11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6479CFC11C59181D00EE6A11 /* Main.storyboard */; };
+		6479CFC71C5977C100EE6A11 /* BasicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479CFC61C5977C100EE6A11 /* BasicFunctions.swift */; };
 		64BA9F951C3ECA360041E486 /* WheaterPredictionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */; };
-		64BA9F991C4174620041E486 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA9F981C4174620041E486 /* MapViewController.swift */; };
 		64D1CFF21C46678000C9F7DF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF11C46678000C9F7DF /* Bolts.framework */; };
 		64D1CFF41C46678800C9F7DF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF31C46678800C9F7DF /* Parse.framework */; };
 		64D1CFF61C4668CC00C9F7DF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D1CFF51C4668CC00C9F7DF /* AudioToolbox.framework */; };
@@ -65,8 +64,6 @@
 /* Begin PBXFileReference section */
 		644B68AE1C3E8E7B006DC6E1 /* KITEGURU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KITEGURU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		644B68B11C3E8E7B006DC6E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		644B68B31C3E8E7B006DC6E1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		644B68B61C3E8E7B006DC6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		644B68B81C3E8E7B006DC6E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		644B68BB1C3E8E7B006DC6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		644B68BD1C3E8E7B006DC6E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,8 +73,9 @@
 		644B68CD1C3E8E7B006DC6E1 /* KITEGURUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KITEGURUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		644B68D11C3E8E7B006DC6E1 /* KITEGURUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KITEGURUUITests.swift; sourceTree = "<group>"; };
 		644B68D31C3E8E7B006DC6E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6479CFC21C59181D00EE6A11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6479CFC61C5977C100EE6A11 /* BasicFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicFunctions.swift; path = ../BasicFunctions.swift; sourceTree = "<group>"; };
 		64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheaterPredictionsViewController.swift; sourceTree = "<group>"; };
-		64BA9F981C4174620041E486 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		64D1CFF11C46678000C9F7DF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		64D1CFF31C46678800C9F7DF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		64D1CFF51C4668CC00C9F7DF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -176,9 +174,9 @@
 				64D1D0131C4677F000C9F7DF /* View Controllers */,
 				64D1D0121C4677C800C9F7DF /* Model */,
 				644B68B11C3E8E7B006DC6E1 /* AppDelegate.swift */,
-				644B68B51C3E8E7B006DC6E1 /* Main.storyboard */,
 				644B68B81C3E8E7B006DC6E1 /* Assets.xcassets */,
 				644B68BD1C3E8E7B006DC6E1 /* Info.plist */,
+				6479CFC11C59181D00EE6A11 /* Main.storyboard */,
 				644B68BA1C3E8E7B006DC6E1 /* LaunchScreen.storyboard */,
 			);
 			path = KITEGURU;
@@ -227,6 +225,7 @@
 		64D1D0121C4677C800C9F7DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6479CFC61C5977C100EE6A11 /* BasicFunctions.swift */,
 				64D1D0181C46903900C9F7DF /* signUp.swift */,
 				64D1D01A1C46ADA800C9F7DF /* Enums.swift */,
 				64D1D01C1C47B8D000C9F7DF /* SignIn.swift */,
@@ -241,10 +240,8 @@
 		64D1D0131C4677F000C9F7DF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				644B68B31C3E8E7B006DC6E1 /* MainViewController.swift */,
-				64D1D0141C467A1700C9F7DF /* SignInViewController.swift */,
 				64D1D0161C467A8B00C9F7DF /* SignUpViewController.swift */,
-				64BA9F981C4174620041E486 /* MapViewController.swift */,
+				64D1D0141C467A1700C9F7DF /* SignInViewController.swift */,
 				64D1D0201C47F70500C9F7DF /* PersonalAccountViewController.swift */,
 				64BA9F941C3ECA360041E486 /* WheaterPredictionsViewController.swift */,
 				64D1D0221C4C0B4B00C9F7DF /* PersonalRatingViewController.swift */,
@@ -359,8 +356,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				644B68BC1C3E8E7B006DC6E1 /* LaunchScreen.storyboard in Resources */,
+				6479CFC31C59181D00EE6A11 /* Main.storyboard in Resources */,
 				644B68B91C3E8E7B006DC6E1 /* Assets.xcassets in Resources */,
-				644B68B71C3E8E7B006DC6E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				64EB56E01C44F041006DE593 /* WeatherService.swift in Sources */,
-				644B68B41C3E8E7B006DC6E1 /* MainViewController.swift in Sources */,
 				644B68B21C3E8E7B006DC6E1 /* AppDelegate.swift in Sources */,
 				64D1D01F1C47F21000C9F7DF /* Parsemodel.swift in Sources */,
 				64EB56E21C44F793006DE593 /* Weather.swift in Sources */,
@@ -395,10 +391,10 @@
 				64D1D0231C4C0B4B00C9F7DF /* PersonalRatingViewController.swift in Sources */,
 				64D1D0211C47F70500C9F7DF /* PersonalAccountViewController.swift in Sources */,
 				64D1D0191C46903900C9F7DF /* signUp.swift in Sources */,
+				6479CFC71C5977C100EE6A11 /* BasicFunctions.swift in Sources */,
 				64BA9F951C3ECA360041E486 /* WheaterPredictionsViewController.swift in Sources */,
 				64D1D01D1C47B8D000C9F7DF /* SignIn.swift in Sources */,
 				64D1D0171C467A8B00C9F7DF /* SignUpViewController.swift in Sources */,
-				64BA9F991C4174620041E486 /* MapViewController.swift in Sources */,
 				64EB56DC1C440186006DE593 /* SwiftyJSON.swift in Sources */,
 				64D1D01B1C46ADA800C9F7DF /* Enums.swift in Sources */,
 			);
@@ -436,20 +432,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		644B68B51C3E8E7B006DC6E1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				644B68B61C3E8E7B006DC6E1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		644B68BA1C3E8E7B006DC6E1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				644B68BB1C3E8E7B006DC6E1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6479CFC11C59181D00EE6A11 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6479CFC21C59181D00EE6A11 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

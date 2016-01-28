@@ -26,10 +26,9 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
     var icon: String?
     var speed: Double?
     var deg: Double?
-    
-
     let weatherService = WeatherService()
-
+    
+    // http://sweettutos.com/2015/04/24/swift-mapkit-tutorial-series-how-to-search-a-place-address-or-poi-in-the-map/
     @IBOutlet weak var mapView: MKMapView!
     var searchController:UISearchController!
     var annotation:MKAnnotation!
@@ -40,7 +39,7 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
     
-    
+    // http://sweettutos.com/2015/04/24/swift-mapkit-tutorial-series-how-to-search-a-place-address-or-poi-in-the-map/
     @IBAction func SearchNavigationBarButton(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -48,7 +47,8 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         presentViewController(searchController, animated: true, completion: nil)
     }
     
-    
+    // https://www.youtube.com/watch?v=YPFrQkZpIKw
+    // Openweathermap.org 
     func setWeather(weather: Weather) {
         print("set weather")
         print("City: \(weather.cityName) temp:\(weather.temp) description:\(weather.description) ")
@@ -56,7 +56,6 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         TempLabel.text = String(format: "%.2f", weather.temp) + " Celsius"
         wheaterMoodLabel.text = weather.description
         weatherImage.image = UIImage(named: weather.icon)
-//        WindSpeedLabel.text = "\(weather.windSpeed)"
         WindSpeedLabel.text = String(format: "%.2f", weather.windSpeed) + " Knots"
         WindDirectionLabel.text = String(format: "%.2f", weather.windDeg) + " Direction"
         city = weather.cityName
@@ -65,17 +64,16 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         icon = weather.icon
         speed = weather.windSpeed
         deg = weather.windDeg
-
     }
-    
-    
-//    func resetTextField() {
-//        CityTextField.resignFirstResponder()
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.weatherService.delegate = self
+        self.weatherService.delegate = self
+        
+        // http://stackoverflow.com/questions/17403483/set-title-of-back-bar-button-item-in-ios
+        // NavigationBar titles
+        let btn = UIBarButtonItem(title: "Gear", style: .Plain, target: self, action: "backBtnClicked")
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = btn
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,15 +81,18 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    // http://sweettutos.com/2015/04/24/swift-mapkit-tutorial-series-how-to-search-a-place-address-or-poi-in-the-map/
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
-        //1
+        
+        // Als er gezocht word zal de navigatie bar verdwijnen en zullen de annotatie verdwijnen op de map
         searchBar.resignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
         if self.mapView.annotations.count != 0{
             annotation = self.mapView.annotations[0]
             self.mapView.removeAnnotation(annotation)
         }
-        //2
+        
+        // Als het adres niet compleet is maakt hij er toch nog een ‘naturalLanguageQuery’ van
         localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
 
@@ -101,41 +102,43 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         localSearch = MKLocalSearch(request: localSearchRequest)
         localSearch.startWithCompletionHandler { (localSearchResponse, error) -> Void in
             
+            // Geeft een alert als de plaats niet gevonden kan worden
             if localSearchResponse == nil{
                 let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
-            //3
+            
+            //De api return de goeie coordinaten en daarna komt een pin op de plaats te staan
             self.pointAnnotation = MKPointAnnotation()
             self.pointAnnotation.title = searchBar.text
             self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
-            
-            
             self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
             self.mapView.centerCoordinate = self.pointAnnotation.coordinate
             self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
         }
     }
 
+    // De onscreen keyboard gaat weg als je buiten het keyboard klikt
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
 
+    // Als er geen ingelogde user is kan je niet gebruiken maken van de advise button
     @IBAction func AdviseButton(sender: AnyObject) {
         let currentUser = PFUser.currentUser()
         if currentUser == nil {
             self.AdviseButton.enabled = false
+            
             //You can't get advise if you are nog logged in!
             showSuccessAlert()
-
         }else{
             performSegueWithIdentifier("mapToPersonal", sender: nil)
-            
         }
     }
     
+    // Deze alert word dan aangeroepen
     func showSuccessAlert() {
         let alertview = UIAlertController(title: "Do you want advise?", message: "You have to log in first", preferredStyle: .Alert)
         alertview.addAction(UIAlertAction(title: "Login", style: .Default, handler:
@@ -147,7 +150,7 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
         self.presentViewController(alertview, animated: true, completion: nil)
     }
     
-    
+    // waardes die naar het volgende scherme worden getransporteerd
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "mapToPersonal") {
             let svc = segue.destinationViewController as! PersonalRatingViewController;
@@ -159,5 +162,4 @@ class WheaterPredictionsViewController: UIViewController, WeatherServiceDelegate
             svc.icon = icon
         }
     }
-
 }

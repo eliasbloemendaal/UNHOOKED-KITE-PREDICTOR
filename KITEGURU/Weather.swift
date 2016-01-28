@@ -8,6 +8,8 @@
 
 import Foundation
 
+ //https://www.youtube.com/watch?v=YPFrQkZpIKw
+ // these collections of video's, will have a total time of 2/3 hours
  struct Weather {
     
     let cityName: String

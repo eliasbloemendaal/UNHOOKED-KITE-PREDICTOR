@@ -11,12 +11,13 @@ import UIKit
 
 typealias userHandler = (user: PFUser?, error: NSError?)
 
+// https://github.com/kevincaughman/Resume-App/tree/master/Models
+//
 class SignIn {
     
-  
     var logIn: Bool = false
     
-    // Check to make sure none of the text fields on our sign up view are empty
+    // Een check of the fields niet leeg zijn
     static func hasEmptyFields(userName: String, password: String) -> Bool {
         if userName.isEmpty || password.isEmpty {
             return true
@@ -24,9 +25,7 @@ class SignIn {
         return false
     }
     
-    ////////// Video V8 Method ///////////////////
-    
-    // use logInWithUsername method to log in
+    // Gebruik de username om in te loggen
     static func loginUserAsync(userName: String, password: String, completion:(success:Bool) -> Void)
     {
         
@@ -45,7 +44,7 @@ class SignIn {
                     print(login)
                     
                 }
-        }
+            }
         print(logIn)
     }
 
