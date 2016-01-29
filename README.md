@@ -1,3 +1,10 @@
+# De laatste applicatie staat in een nieuw repositorie!
+KITEGURU 
+
+
+
+
+
 # UNHOOKED-KITE-PREDICTOR
 Kite prediction in an certain area
 
